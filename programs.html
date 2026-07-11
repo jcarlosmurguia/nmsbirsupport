@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Programs · NM FAST</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="index.html" class="brand"><img src="assets/NMFAST_color.png" alt="NM FAST"/></a>
+    <nav class="site-nav">
+      <a href="programs.html" class="active">Programs</a>
+      <a href="calendar.html">Calendar</a>
+      <a href="resources.html">Resources</a>
+      <a href="news.html">News</a>
+      <a href="about.html">About</a>
+      <a href="briefing.html">Briefing</a>
+      <a href="apply.html" class="btn btn-primary btn-sm">Apply</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hub-intro">
+  <div class="wrap">
+    <div class="eyebrow">What we offer</div>
+    <h1 class="display">Nine ways to win.<br/><span class="accent">One SBIR journey.</span></h1>
+    <p class="lead">Every program below is <strong>free to New Mexico founders</strong> and funded by NMEDD through the federal FAST grant. Not sure which one fits? <a href="apply.html">Take the 2-minute match survey</a>.</p>
+  </div>
+</section>
+
+<section class="hub-filters">
+  <div class="wrap">
+    <div class="filter-row">
+      <div class="filter-label">Stage</div>
+      <div class="chips" data-filter-group="stage">
+        <button class="chip active" data-val="all">All</button>
+        <button class="chip" data-val="pre-sbir">Pre-SBIR</button>
+        <button class="chip" data-val="phase-0">Phase 0</button>
+        <button class="chip" data-val="phase-1">Phase I</button>
+        <button class="chip" data-val="phase-2">Phase II</button>
+      </div>
+    </div>
+    <div class="filter-row">
+      <div class="filter-label">Sector</div>
+      <div class="chips" data-filter-group="sector">
+        <button class="chip active" data-val="all">All</button>
+        <button class="chip" data-val="advanced-energy">Advanced Energy</button>
+        <button class="chip" data-val="advanced-computing">Advanced Computing</button>
+        <button class="chip" data-val="bioscience">Bioscience</button>
+        <button class="chip" data-val="aerospace">Aerospace</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="wrap hub-main">
+  <div class="program-list" id="program-list"></div>
+</main>
+
+<section class="cta-band">
+  <div class="wrap cta-band-inner">
+    <div>
+      <div class="eyebrow">Still not sure?</div>
+      <h2 class="h2">Let us match you.</h2>
+      <p>The 2-minute survey recommends the 1–3 programs that fit your stage, agency, and timeline.</p>
+    </div>
+    <a href="apply.html" class="btn btn-primary btn-lg">Take the match survey →</a>
+  </div>
+</section>
+
+<div id="site-footer-root"></div>
+
+<script src="data.js"></script>
+<script src="shared.js"></script>
+<script src="programs.js"></script>
+</body>
+</html>

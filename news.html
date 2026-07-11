@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>News &amp; Press · NM FAST</title>
+<meta name="description" content="Press releases and news coverage about the NM FAST program, New Mexico's free statewide SBIR/STTR support initiative operated by Arrowhead Center at NMSU."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+<style>
+/* ── News page styles (news.html only) ── */
+.news-filter-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 32px 0 24px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.news-filter-count {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--ink-mute);
+  letter-spacing: 0.04em;
+}
+.news-filter-count strong { color: var(--maroon); }
+
+/* Re-use .chips / .chip from styles.css — already defined there */
+
+/* ── News card list ── */
+.news-card-list { display: grid; gap: 14px; }
+
+.news-card {
+  background: var(--off-white);
+  border: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  gap: 0;
+  transition: border-color 140ms, transform 140ms;
+  text-decoration: none;
+  color: var(--ink-2);
+}
+.news-card:hover {
+  border-color: var(--maroon);
+  transform: translateY(-1px);
+  text-decoration: none;
+}
+
+/* Date column */
+.nc-date {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 24px 0 24px 24px;
+  line-height: 1;
+  gap: 2px;
+}
+.nc-date .m {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-2);
+}
+.nc-date .d {
+  font-size: 40px;
+  font-weight: 800;
+  letter-spacing: -0.03em;
+  color: var(--maroon);
+  line-height: 1;
+  margin: 3px 0;
+}
+.nc-date .y {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--ink-mute);
+}
+
+/* Content column */
+.nc-body {
+  padding: 24px 28px 24px 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+.nc-source {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--maroon);
+}
+.nc-title {
+  font-size: 18px;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+.nc-desc {
+  font-size: 14px;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  margin-top: 2px;
+}
+.nc-link {
+  margin-top: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--maroon);
+  letter-spacing: 0.02em;
+  align-self: flex-start;
+}
+.nc-link::after { content: ' →'; }
+
+/* Featured card (first / most recent) */
+.news-card.featured-card {
+  background: var(--maroon);
+  border-color: var(--maroon);
+  color: var(--off-white);
+}
+.news-card.featured-card .nc-date .m { color: var(--gold); }
+.news-card.featured-card .nc-date .d { color: var(--off-white); }
+.news-card.featured-card .nc-date .y { color: rgba(250,247,242,0.55); }
+.news-card.featured-card .nc-source { color: var(--gold); }
+.news-card.featured-card .nc-title { color: var(--off-white); font-size: 20px; }
+.news-card.featured-card .nc-desc { color: rgba(250,247,242,0.82); }
+.news-card.featured-card .nc-link { color: var(--gold); }
+.news-card.featured-card:hover { border-color: var(--maroon-2); background: var(--maroon-2); }
+
+/* Empty state */
+.news-empty {
+  padding: 60px 24px;
+  text-align: center;
+  color: var(--ink-mute);
+  background: var(--off-white);
+  border: 1px dashed var(--line);
+  display: none;
+}
+
+/* Contact tip (bottom) */
+.news-contact-tip {
+  margin-top: 48px;
+  background: var(--cream-2);
+  border-left: 3px solid var(--gold);
+  padding: 22px 28px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+.news-contact-tip .tip-label {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-2);
+  margin-bottom: 4px;
+}
+.news-contact-tip p {
+  margin: 0;
+  font-size: 14px;
+  color: var(--ink-soft);
+  line-height: 1.55;
+}
+.news-contact-tip a { color: var(--maroon); font-weight: 700; }
+
+@media (max-width: 640px) {
+  .news-card { grid-template-columns: 76px 1fr; }
+  .nc-date { padding: 18px 0 18px 16px; }
+  .nc-date .d { font-size: 30px; }
+  .nc-body { padding: 18px 18px 18px 12px; }
+  .nc-title { font-size: 16px; }
+  .news-card.featured-card .nc-title { font-size: 17px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/NMFAST_color.png" alt="NM FAST"/>
+    </a>
+    <nav class="site-nav">
+      <a href="programs.html">Programs</a>
+      <a href="calendar.html">Calendar</a>
+      <a href="resources.html">Resources</a>
+      <a href="news.html" class="active">News</a>
+      <a href="about.html">About</a>
+      <a href="briefing.html">Briefing</a>
+      <a href="apply.html" class="btn btn-primary btn-sm">Apply</a>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="hub-intro">
+  <div class="wrap">
+    <div class="eyebrow">NM FAST in the Press</div>
+    <h1 class="display">News &amp; press<br/><span class="accent">releases.</span></h1>
+    <p class="lead">Official releases published by the NMSU Newsroom about NM FAST programs, awards, and events. Each entry links to the original publication.</p>
+  </div>
+</section>
+
+<!-- MAIN -->
+<main class="wrap" style="padding: 0 28px 80px;">
+
+  <!-- Filter bar -->
+  <div class="news-filter-bar">
+    <p class="news-filter-count">Showing <strong id="visible-count">10</strong> releases</p>
+    <div class="chips" role="group" aria-label="Filter by source">
+      <button class="chip active" data-filter="all">All sources</button>
+      <button class="chip" data-filter="nmsu">NMSU Newsroom</button>
+      <button class="chip" data-filter="nmedd">NMEDD</button>
+      <button class="chip" data-filter="other">Other</button>
+    </div>
+  </div>
+
+  <!-- News list -->
+  <div class="news-card-list" id="news-list" aria-live="polite">
+
+    <!--
+    ══════════════════════════════════════════════════════════
+    TO ADD A NEW RELEASE — paste this block at the TOP of
+    the list and update the existing featured-card to a
+    regular .news-card
+
+    <a class="news-card featured-card" data-source="nmsu"
+       href="URL" target="_blank" rel="noopener">
+      <div class="nc-date">
+        <span class="m">MON</span>
+        <span class="d">DD</span>
+        <span class="y">YYYY</span>
+      </div>
+      <div class="nc-body">
+        <div class="nc-source">NMSU Newsroom</div>
+        <div class="nc-title">HEADLINE HERE</div>
+        <div class="nc-desc">One-sentence description.</div>
+        <span class="nc-link">Read full release</span>
+      </div>
+    </a>
+    ══════════════════════════════════════════════════════════
+    -->
+
+    <!-- 1 · Jun 22, 2026 · FEATURED -->
+    <a class="news-card featured-card" data-source="nmsu"
+       href="https://newsroom.nmsu.edu/news/nm-fast-opens-applications-for-department-of-energy-sbir-sttr-accelerator/s/64ed6638-bc94-412d-87d7-437e0fe27e04"
+       target="_blank" rel="noopener">
+      <div class="nc-date">
+        <span class="m">Jun</span>
+        <span class="d">22</span>
+        <span class="y">2026</span>
+      </div>
+      <div class="nc-body">
+        <div class="nc-source">NMSU Newsroom · Latest</div>
+        <div class="nc-title">NM FAST opens applications for Department of Energy SBIR/STTR accelerator</div>
+        <div class="nc-desc">Free 10-week fall cohort guiding New Mexico companies through a full DOE SBIR/STTR proposal package, running Sept. 22–Nov. 17. Application deadline: September 10, 2026.</div>
+        <span class="nc-link">Read full release</span>
+      </div>
+    </a>
+
+    <!-- 2 · Jun 18, 2026 -->
+    <a class="news-card" data-source="nmsu"
+       href="https://newsroom.nmsu.edu/news/nm-fast-extends-application-deadline-for-sbir-sttr-commercialization-bridge-pilot/s/e06cf9ae-e383-44f1-b809-5d2712b443ad"
+       target="_blank" rel="noopener">
+      <div class="nc-date">
+        <span class="m">Jun</span>
+        <span class="d">18</span>
+        <span class="y">2026</span>
+      </div>
+      <div class="nc-body">
+        <div class="nc-source">NMSU Newsroom</div>
+        <div class="nc-title">NM FAST extends application deadline for SBIR/STTR Commercialization Bridge Pilot</div>
+        <div class="nc-desc">Deadline extended to August 5 for New Mexico Phase II awardees ready to transition to federal procurement and Phase III commercialization, in partnership with the Santa Fe Business Incubator.</div>
+        <span class="nc-link">Read full release</span>
+      </div>
+    </a>
+
+    <!-- 3 · Jun 17, 2026 -->
+    <a class="news-card" data-source="nmsu"
+       href="https://newsroom.nmsu.edu/news/nm-fast-launches-space-sbir-sttr-accelerator-for-new-mexico-startups/s/fd8a43bf-6b74-4794-88ea-f9b134634b13"
+       target="_blank" rel="noopener">
+      <div class="nc-date">
+        <span class="m">Jun</span>
+        <span class="d">17</span>
+        <span class="y">2026</span>
+      </div>
+      <div class="nc-body">
+        <div class="nc-source">NMSU Newsroom</div>
+        <div class="nc-title">NM FAST launches space SBIR/STTR accelerator for New Mexico startups</div>
+        <div class="nc-desc">Free 10-to-12-week space-sector cohort delivered by LARTA Institute for companies pursuing NASA and Space Force SBIR/STTR funding, launching July 21, 2026.</div>
+        <span class="nc-link">Read full release</span>
+      </div>
+    </a>
+
+    <!-- 4 · Jun 15, 2026 -->
+    <a class="news-card" data-source="nmsu"
+       href="https://newsroom.nmsu.edu/news/nm-fast-opens-registration-for-second-sbir-101-workshop/s/769a8f69-e62a-4cfc-b9f2-8a13e4d1cba7"
+       target="_blank" rel="noopener">
+      <div class="nc-date">
+        <span class="m">Jun</span>
+        <span class="d">15</span>
+        <span class="y">2026</span>
+      </div>
+      <div class="nc-body">
+        <div class="nc-source">NMSU Newsroom</div>
+        <div class="nc-title">NM FAST opens registration for second SBIR 101 workshop</div>
+        <div class="nc-desc">Second free SBIR 101 foundations webinar on September 15 at Q Station in Albuquerque (virtual option available), designed for first-time applicants who missed the first session.</div>
+        <span class="nc-link">Read full release</span>
+      </div>
+    </a>
+
+    <!-- 5 · May 18, 2026 -->
+    <a class="news-card" data-source="nmsu"
+       href="https://newsroom.nmsu.edu/news/nm-fast-opens-statewide-commercialization-program-for-sbir-sttr-phase-ii-awardees/s/a8025980-4122-4fb4-8fdb-94290a0b7d84"
+       target="_blank" rel="noopener">
+      <div class="nc-date">
+        <span class="m">May</span>
+        <span class="d">18</span>
+        <span class="y">2026</span>
+      </div>
+      <div class="nc-body">
+        <div class="nc-source">NMSU Newsroom</div>
+        <div class="nc-title">NM FAST opens statewide commercialization program for SBIR/STTR Phase II awardees</div>
+        <div class="nc-desc">Launch of the SBIR/STTR Commercialization Bridge Pilot with the Santa Fe Business Incubator, offering hands-on federal procurement and Phase III transition support at no cost to selected NM companies.</div>
+        <span class="nc-link">Read full release</span>
+      </div>
+    </a>
+
+    <!-- 6 · May 13, 2026 -->
+    <a class="news-card" data-source="nmsu"
+       href="https://newsroom.nmsu.edu/news/nm-fast-to-host-free-workshop-on-startup-funding--licensing--and-ip-strategy/s/bf810a84-776f-48ac-a636-011f790292b5"
+       target="_blank" rel="noopener">
+      <div class="nc-date">
+        <span class="m">May</span>
+        <span class="d">13</span>
+        <span class="y">2026</span>
+      </div>
+      <div class="nc-body">
+        <div class="nc-source">NMSU Newsroom</div>
+        <div class="nc-title">NM FAST to host free workshop on startup funding, licensing, and IP strategy</div>
+        <div class="nc-desc">Free virtual workshop on June 17 covering capital-raising strategies, intellectual property protection, and licensing considerations for New Mexico founders pursuing SBIR/STTR awards.</div>
+        <span class="nc-link">Read full release</span>
+      </div>
+    </a>
+
+    <!-- 7 · May 11, 2026 -->
+    <a class="news-card" data-source="nmsu"
+       href="https://newsroom.nmsu.edu/news/arrowhead-center-s-nm-fast-to-host-free-sbir-101-webinar-for-first-time-applicants/s/394e80ce-461f-4fd1-b215-1fb3b9bf56a3"
+       target="_blank" rel="noopener">
+      <div class="nc-date">
+        <span class="m">May</span>
+        <span class="d">11</span>
+        <span class="y">2026</span>
+      </div>
+      <div class="nc-body">
+        <div class="nc-source">NMSU Newsroom</div>
+        <div class="nc-title">Arrowhead Center's NM FAST to host free SBIR 101 webinar for first-time applicants</div>
+        <div class="nc-desc">Inaugural SBIR 101 webinar on May 19 — a free two-hour hybrid session in Albuquerque and online introducing New Mexico founders to the federal SBIR and STTR funding programs.</div>
+        <span class="nc-link">Read full release</span>
+      </div>
+    </a>
+
+    <!-- 8 · May 5, 2026 -->
+    <a class="news-card" data-source="nmsu"
+       href="https://newsroom.nmsu.edu/news/arrowhead-center-s-nm-fast-to-host-free-sbir-funding-workshop/s/f394cdd1-ee05-491d-80e7-82c8377ac883"
+       target="_blank" rel="noopener">
+      <div class="nc-date">
+        <span class="m">May</span>
+        <span class="d">5</span>
+        <span class="y">2026</span>
+      </div>
+      <div class="nc-body">
+        <div class="nc-source">NMSU Newsroom</div>
+        <div class="nc-title">Arrowhead Center's NM FAST to host free SBIR funding workshop</div>
+        <div class="nc-desc">Free virtual workshop on May 27 covering SBIR funding, R&amp;D tax strategy under Section 174, and runway planning for early-stage New Mexico founders pursuing federal innovation awards.</div>
+        <span class="nc-link">Read full release</span>
+      </div>
+    </a>
+
+    <!-- 9 · Apr 30, 2026 -->
+    <a class="news-card" data-source="nmsu"
+       href="https://newsroom.nmsu.edu/news/nm-fast-announces-final-call-for-larta-institute-commercialization-cohort/s/69ce9bea-e47f-4c97-afe3-27665efc2921"
+       target="_blank" rel="noopener">
+      <div class="nc-date">
+        <span class="m">Apr</span>
+        <span class="d">30</span>
+        <span class="y">2026</span>
+      </div>
+      <div class="nc-body">
+        <div class="nc-source">NMSU Newsroom</div>
+        <div class="nc-title">NM FAST announces final call for Larta Institute commercialization cohort</div>
+        <div class="nc-desc">Final call for applications to the inaugural LARTA Institute cohort starting May 7, offering up to 20 New Mexico deep-tech startups free commercialization training and SBIR/STTR proposal support.</div>
+        <span class="nc-link">Read full release</span>
+      </div>
+    </a>
+
+    <!-- 10 · Mar 4, 2026 -->
+    <a class="news-card" data-source="nmsu"
+       href="https://newsroom.nmsu.edu/news/nmsu-s-arrowhead-center-awarded--450-000-to-expand-statewide-innovation-support/s/cc40632c-266c-4f9c-94be-116fb1b8badd"
+       target="_blank" rel="noopener">
+      <div class="nc-date">
+        <span class="m">Mar</span>
+        <span class="d">4</span>
+        <span class="y">2026</span>
+      </div>
+      <div class="nc-body">
+        <div class="nc-source">NMSU Newsroom</div>
+        <div class="nc-title">NMSU's Arrowhead Center awarded $450,000 to expand statewide innovation support</div>
+        <div class="nc-desc">Arrowhead Center received a $450,000 FY26 grant from NMEDD's Technology and Innovation Office to continue and expand NM FAST, funding workshops, accelerator cohorts, microgrants, and statewide SBIR/STTR outreach.</div>
+        <span class="nc-link">Read full release</span>
+      </div>
+    </a>
+
+  </div><!-- /#news-list -->
+
+  <!-- Empty state -->
+  <div class="news-empty" id="news-empty" role="status">
+    <p style="font-size: 32px; margin-bottom: 8px;">📭</p>
+    <p>No releases match that filter. Try <strong>All sources</strong>.</p>
+  </div>
+
+  <!-- Media contact tip -->
+  <div class="news-contact-tip">
+    <div>
+      <div class="tip-label">Media Inquiries</div>
+      <p>For press questions, interview requests, or to share coverage of NM FAST, contact <strong>Carlos Murguia</strong> at <a href="mailto:cmurguia@nmsu.edu">cmurguia@nmsu.edu</a> or <a href="tel:+15754051042">(575) 405-1042</a>.</p>
+    </div>
+  </div>
+
+</main>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="wrap cta-band-inner">
+    <div>
+      <div class="eyebrow">Ready to apply?</div>
+      <h2 class="h2">Find the right program.</h2>
+      <p>Take the 2-minute match survey and we'll recommend the NM FAST programs that fit your stage and sector.</p>
+    </div>
+    <div>
+      <a href="apply.html" class="btn btn-primary btn-lg">Start the survey →</a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer-root"></div>
+
+<script src="data.js"></script>
+<script src="shared.js"></script>
+<script>
+(function () {
+  var list    = document.getElementById('news-list');
+  var empty   = document.getElementById('news-empty');
+  var countEl = document.getElementById('visible-count');
+  var chips   = document.querySelectorAll('.chips .chip');
+
+  function applyFilter(filter) {
+    var cards   = list.querySelectorAll('.news-card');
+    var visible = 0;
+    cards.forEach(function (card) {
+      var src  = card.getAttribute('data-source') || 'other';
+      var show = filter === 'all' || src === filter;
+      card.style.display = show ? '' : 'none';
+      if (show) visible++;
+    });
+    countEl.textContent = visible;
+    empty.style.display = visible === 0 ? 'block' : 'none';
+  }
+
+  chips.forEach(function (chip) {
+    chip.addEventListener('click', function () {
+      chips.forEach(function (c) { c.classList.remove('active'); });
+      chip.classList.add('active');
+      applyFilter(chip.getAttribute('data-filter'));
+    });
+  });
+
+  applyFilter('all');
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Resources · NM FAST</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="index.html" class="brand"><img src="assets/NMFAST_color.png" alt="NM FAST"/></a>
+    <nav class="site-nav">
+      <a href="programs.html">Programs</a>
+      <a href="calendar.html">Calendar</a>
+      <a href="resources.html" class="active">Resources</a>
+      <a href="news.html">News</a>
+      <a href="about.html">About</a>
+      <a href="briefing.html">Briefing</a>
+      <a href="apply.html" class="btn btn-primary btn-sm">Apply</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hub-intro">
+  <div class="wrap">
+    <div class="eyebrow">Self-serve library</div>
+    <h1 class="display">Everything you need,<br/><span class="accent">gratis.</span></h1>
+    <p class="lead">Primers, checklists, templates, past webinar recordings, and the monthly newsletter archive. If you can learn it in a PDF, it's here. If you need a person — <a href="apply.html">take the match survey</a>.</p>
+  </div>
+</section>
+
+<main class="wrap" style="padding: 48px 28px 48px;">
+  <div class="res-grid" id="res-grid"></div>
+
+  <section style="margin-top: 80px;">
+    <div class="eyebrow">Watch &amp; Learn</div>
+    <h2 class="h2" style="margin-top: 8px;">Recorded sessions &amp; success stories.</h2>
+    <p class="lead" style="max-width: 720px; margin-bottom: 24px;">Recorded sessions, success stories, and agency-specific guides. New videos added throughout the year.</p>
+    <div class="videos-grid" id="videos-list"></div>
+  </section>
+
+  <section style="margin-top: 80px; padding-top: 48px; border-top: 1px solid var(--line);">
+    <div class="eyebrow">Federal Agency Guide</div>
+    <h2 class="h2" style="margin-top: 8px;">Federal Agency Guide.</h2>
+    <p class="lead" style="max-width: 720px; margin-bottom: 24px;">Updated regularly. Click any agency to see current topics, deadlines, and NM FAST coaching focus.</p>
+    <div class="agency-grid" id="agency-grid"></div>
+  </section>
+
+  <section style="margin-top: 80px; padding-top: 48px; border-top: 1px solid var(--line);">
+    <div class="eyebrow">Federal resources</div>
+    <h2 class="h2" style="margin-top: 8px;">Direct links worth knowing.</h2>
+    <div class="res-grid" style="margin-top: 24px;">
+      <a class="res-card" href="https://www.sbir.gov" target="_blank" rel="noopener">
+        <div class="res-kind">Federal portal</div>
+        <h3 class="h3">SBIR.gov</h3>
+        <p>Solicitations, past awards, and agency contacts. Your home base for finding the right topic.</p>
+      </a>
+      <a class="res-card" href="https://www.sbir.gov/topics" target="_blank" rel="noopener">
+        <div class="res-kind">Topics</div>
+        <h3 class="h3">Open Solicitations</h3>
+        <p>Live list of open SBIR/STTR topics across all 12 participating agencies.</p>
+      </a>
+      <a class="res-card" href="https://sam.gov" target="_blank" rel="noopener">
+        <div class="res-kind">Registration</div>
+        <h3 class="h3">SAM.gov</h3>
+        <p>You need to register here before you can submit. Allow 2–4 weeks on your first try.</p>
+      </a>
+    </div>
+  </section>
+</main>
+
+<section class="cta-band">
+  <div class="wrap cta-band-inner">
+    <div>
+      <div class="eyebrow">Need something not here?</div>
+      <h2 class="h2">Just ask.</h2>
+      <p>If you can't find a template, recording, or guide — we'll point you to it or write one.</p>
+    </div>
+    <a href="mailto:cmurguia@nmsu.edu" class="btn btn-primary btn-lg">Email us →</a>
+  </div>
+</section>
+
+<div id="site-footer-root"></div>
+
+<script src="data.js"></script>
+<script src="shared.js"></script>
+<script>
+(function () {
+  const D = window.NMFAST_DATA;
+
+  const grid = document.getElementById('res-grid');
+  D.resources.forEach(r => {
+    const card = document.createElement('div');
+    card.className = 'res-card';
+    card.innerHTML = `
+      <div class="res-kind">${r.kind}</div>
+      <h3 class="h3">${r.title}</h3>
+      <p>${r.desc}</p>
+      <a href="mailto:cmurguia@nmsu.edu?subject=${encodeURIComponent('Resource request: ' + r.title)}" class="small" style="margin-top: auto;">Request access →</a>
+    `;
+    grid.appendChild(card);
+  });
+
+  const videosList = document.getElementById('videos-list');
+  if (videosList && D.videos) {
+    D.videos.forEach(v => {
+      const card = document.createElement('a');
+      card.className = 'video-card';
+      card.href = v.url || '#';
+      if (v.url && v.url !== '#') { card.target = '_blank'; card.rel = 'noopener'; }
+      card.innerHTML = `
+        <div class="video-thumb">
+          <svg viewBox="0 0 60 60" width="48" height="48" aria-hidden="true" style="color: var(--maroon); opacity: 0.7;">
+            <circle cx="30" cy="30" r="28" fill="rgba(115,12,46,0.08)" stroke="currentColor" stroke-width="2"/>
+            <polygon points="24,20 24,40 42,30" fill="currentColor"/>
+          </svg>
+        </div>
+        <div class="video-meta">
+          <div class="res-kind">Video</div>
+          <h3>${v.title}</h3>
+          <p>${v.desc}</p>
+          <p class="small" style="margin-top: 10px; color: var(--maroon); font-weight: 700;">Watch →</p>
+        </div>
+      `;
+      videosList.appendChild(card);
+    });
+  }
+
+  const agencyGrid = document.getElementById('agency-grid');
+  if (agencyGrid && D.agencies) {
+    D.agencies.forEach(a => {
+      const card = document.createElement('div');
+      card.className = 'agency-card';
+      card.innerHTML = `
+        <div class="ag-head">
+          <span class="ag-short">${a.shortName}</span>
+          <span class="ag-name">${a.name}</span>
+        </div>
+        <div class="ag-topics">${a.topics}</div>
+        <div class="ag-notes">${a.notes}</div>
+        <a href="${a.url}" class="ag-link" target="_blank" rel="noopener">Visit ${a.shortName} →</a>
+      `;
+      agencyGrid.appendChild(card);
+    });
+  }
+})();
+</script>
+</body>
+</html>

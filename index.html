@@ -1,0 +1,280 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>NM FAST · SBIR/STTR Support for New Mexico</title>
+<meta name="description" content="NM FAST provides SBIR/STTR commercialization support to New Mexico startups in Advanced Computing, Bioscience, Advanced Energy, and Aerospace."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+<style>
+/* ── Latest News section (homepage only) ── */
+.section-news { padding: 72px 0; border-top: 1px solid var(--line); }
+.news-feed { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; margin-top: 36px; }
+
+.news-tile {
+  background: var(--off-white);
+  border: 1px solid var(--line);
+  padding: 28px 26px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  text-decoration: none;
+  color: var(--ink-2);
+  transition: border-color 150ms, transform 150ms;
+}
+.news-tile:hover {
+  border-color: var(--maroon);
+  transform: translateY(-2px);
+  text-decoration: none;
+}
+.news-tile-date {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--gold-2);
+}
+.news-tile-title {
+  font-size: 17px;
+  font-weight: 800;
+  line-height: 1.25;
+  color: var(--maroon);
+  flex-grow: 1;
+}
+.news-tile-desc {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.news-tile-source {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-mute);
+  border-top: 1px solid var(--line);
+  padding-top: 12px;
+  margin-top: auto;
+}
+.news-tile-source::before {
+  content: '';
+  display: inline-block;
+  width: 6px; height: 6px;
+  border-radius: 50%;
+  background: var(--maroon);
+  flex-shrink: 0;
+}
+/* First tile is featured */
+.news-tile.featured-tile {
+  background: var(--maroon);
+  border-color: var(--maroon);
+  color: var(--off-white);
+}
+.news-tile.featured-tile .news-tile-date { color: var(--gold); }
+.news-tile.featured-tile .news-tile-title { color: var(--off-white); }
+.news-tile.featured-tile .news-tile-desc { color: rgba(250,247,242,0.82); }
+.news-tile.featured-tile .news-tile-source {
+  color: rgba(250,247,242,0.6);
+  border-color: rgba(250,247,242,0.18);
+}
+.news-tile.featured-tile .news-tile-source::before { background: var(--gold); }
+.news-tile.featured-tile:hover { border-color: var(--maroon-2); background: var(--maroon-2); }
+
+.news-view-all {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}
+
+@media (max-width: 960px) {
+  .news-feed { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 640px) {
+  .news-feed { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/NMFAST_color.png" alt="NM FAST"/>
+    </a>
+    <nav class="site-nav">
+      <a href="programs.html">Programs</a>
+      <a href="calendar.html">Calendar</a>
+      <a href="resources.html">Resources</a>
+      <a href="news.html">News</a>
+      <a href="about.html">About</a>
+      <a href="briefing.html">Briefing</a>
+      <a href="apply.html" class="btn btn-primary btn-sm">Apply</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">New Mexico FAST · Since 2014</div>
+        <h1 class="display">
+          SBIR/STTR support,<br/>
+          built for <span class="accent">New Mexico</span>.
+        </h1>
+        <p class="lead">
+          Commercialization training, one-on-one coaching, micro-grants, and travel stipends
+          for NM startups in Advanced Computing, Bioscience, Advanced Energy, and Aerospace.
+          Operated by Arrowhead Center at NMSU. Funded by NMEDD.
+        </p>
+        <div class="hero-ctas">
+          <a href="apply.html" class="btn btn-primary">Take the 2-min match survey</a>
+          <a href="programs.html" class="btn btn-ghost">See all programs →</a>
+        </div>
+        <div class="hero-proof">
+          <div><strong>470+</strong><span>Startups supported</span></div>
+          <div><strong>~$28M</strong><span>SBIR awards helped</span></div>
+          <div><strong>10 yrs</strong><span>Federal delivery</span></div>
+        </div>
+        <p class="lead" style="margin-top: 20px; font-size: 16px; color: var(--ink-soft);">Over a decade of SBIR wins for New Mexico founders.</p>
+      </div>
+      <aside class="next-deadline" id="next-deadline-card">
+        <div class="eyebrow eyebrow-gold">Next deadline</div>
+        <div class="deadline-date" id="deadline-date">—</div>
+        <div class="deadline-program" id="deadline-program">Loading…</div>
+        <div class="deadline-countdown" id="deadline-countdown">—</div>
+        <a href="apply.html" class="btn btn-gold">Apply now</a>
+        <div class="deadline-others" id="deadline-others"></div>
+      </aside>
+    </div>
+  </div>
+</section>
+
+<section class="section section-programs">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">Programs · FY26</div>
+        <h2 class="h2">Pick your path.</h2>
+      </div>
+      <a href="programs.html" class="btn btn-ghost">View all →</a>
+    </div>
+    <div class="programs-grid" id="programs-grid"></div>
+  </div>
+</section>
+
+<section class="band band-maroon">
+  <div class="wrap band-inner">
+    <div>
+      <div class="eyebrow eyebrow-gold">Not sure where to start?</div>
+      <h2 class="h2 on-dark">Two minutes. Ten questions.<br/>One recommendation.</h2>
+      <p class="lead on-dark">Our match survey asks about your stage, sector, and target agency — then recommends the programs that fit. We read every submission; expect a reply within 2 business days.</p>
+    </div>
+    <div class="band-cta">
+      <a href="apply.html" class="btn btn-gold btn-lg">Start the survey →</a>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">What we run · Every year</div>
+        <h2 class="h2">A steady cadence,<br/>statewide.</h2>
+      </div>
+    </div>
+    <div class="cadence-grid">
+      <div class="cadence-card"><div class="cadence-num">12</div><div class="cadence-label">Monthly newsletters</div><div class="cadence-body">SBIR/STTR opportunities, agency updates, and cohort news.</div></div>
+      <div class="cadence-card"><div class="cadence-num">3</div><div class="cadence-label">ACSA cohorts / year</div><div class="cadence-body">4–12 week accelerators aligned with current solicitations.</div></div>
+      <div class="cadence-card"><div class="cadence-num">6</div><div class="cadence-label">Workshops / year</div><div class="cadence-body">Two SBIR 101 + four agency-specific deep dives.</div></div>
+      <div class="cadence-card"><div class="cadence-num">52</div><div class="cadence-label">Office hours / year</div><div class="cadence-body">Weekly, open to any NM founder working on a proposal.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ── LATEST NEWS ── -->
+<section class="section section-news">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <div class="eyebrow">In the Press</div>
+        <h2 class="h2">Latest news.</h2>
+      </div>
+      <a href="news.html" class="btn btn-ghost">All releases →</a>
+    </div>
+
+    <div class="news-feed">
+
+      <!-- Entry 1 — most recent, featured -->
+      <a class="news-tile featured-tile"
+         href="https://newsroom.nmsu.edu/news/nm-fast-opens-applications-for-department-of-energy-sbir-sttr-accelerator/s/64ed6638-bc94-412d-87d7-437e0fe27e04"
+         target="_blank" rel="noopener">
+        <div class="news-tile-date">Jun 22, 2026</div>
+        <div class="news-tile-title">NM FAST opens applications for Department of Energy SBIR/STTR accelerator</div>
+        <div class="news-tile-desc">Free 10-week fall cohort guiding New Mexico companies through a full DOE SBIR/STTR proposal package. Deadline: September 10, 2026.</div>
+        <div class="news-tile-source">NMSU Newsroom</div>
+      </a>
+
+      <!-- Entry 2 -->
+      <a class="news-tile"
+         href="https://newsroom.nmsu.edu/news/nm-fast-extends-application-deadline-for-sbir-sttr-commercialization-bridge-pilot/s/e06cf9ae-e383-44f1-b809-5d2712b443ad"
+         target="_blank" rel="noopener">
+        <div class="news-tile-date">Jun 18, 2026</div>
+        <div class="news-tile-title">NM FAST extends application deadline for SBIR/STTR Commercialization Bridge Pilot</div>
+        <div class="news-tile-desc">Deadline extended to August 5 for NM Phase II awardees transitioning to federal procurement and Phase III commercialization.</div>
+        <div class="news-tile-source">NMSU Newsroom</div>
+      </a>
+
+      <!-- Entry 3 -->
+      <a class="news-tile"
+         href="https://newsroom.nmsu.edu/news/nm-fast-launches-space-sbir-sttr-accelerator-for-new-mexico-startups/s/fd8a43bf-6b74-4794-88ea-f9b134634b13"
+         target="_blank" rel="noopener">
+        <div class="news-tile-date">Jun 17, 2026</div>
+        <div class="news-tile-title">NM FAST launches space SBIR/STTR accelerator for New Mexico startups</div>
+        <div class="news-tile-desc">Free 10-to-12-week space-sector cohort delivered by LARTA Institute for companies pursuing NASA and Space Force funding, launching July 21.</div>
+        <div class="news-tile-source">NMSU Newsroom</div>
+      </a>
+
+    </div><!-- /.news-feed -->
+  </div>
+</section>
+<!-- ── END LATEST NEWS ── -->
+
+<section class="section section-partners">
+  <div class="wrap">
+    <div class="eyebrow centered">Operated by · Funded by · Delivered with</div>
+    <div class="partners-row">
+      <div class="partner">
+        <div class="partner-label">Operated by</div>
+        <img src="assets/NMFAST_color_NMSU.png" alt="NM FAST · NMSU"/>
+      </div>
+      <div class="partner">
+        <div class="partner-label">Funded by</div>
+        <img src="assets/EDNM-logo-RGB.png" alt="NM Economic Development Department"/>
+      </div>
+      <div class="partner">
+        <div class="partner-label">Commercialization partner</div>
+        <img src="assets/LARTA.jpg" alt="Larta Institute"/>
+      </div>
+      <div class="partner">
+        <div class="partner-label">Prototyping partner</div>
+        <img src="assets/Los-Alamos-Makers.jpg" alt="Los Alamos Makers"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer-root"></div>
+
+<script src="data.js"></script>
+<script src="shared.js"></script>
+<script src="home.js"></script>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Apply · NM FAST Match Survey</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="index.html" class="brand"><img src="assets/NMFAST_color.png" alt="NM FAST"/></a>
+    <nav class="site-nav">
+      <a href="programs.html">Programs</a>
+      <a href="calendar.html">Calendar</a>
+      <a href="resources.html">Resources</a>
+      <a href="news.html">News</a>
+      <a href="about.html">About</a>
+      <a href="briefing.html">Briefing</a>
+      <a href="apply.html" class="btn btn-primary btn-sm">Apply</a>
+    </nav>
+  </div>
+</header>
+
+<main class="survey-wrap" id="survey-root">
+  <div style="margin-bottom: 20px;">
+    <div class="eyebrow">Match survey · Step <span id="step-num">1</span> of <span id="step-total">10</span></div>
+  </div>
+  <div class="survey-progress"><div class="survey-progress-bar" id="progress-bar" style="width: 10%"></div></div>
+
+  <section class="survey-step active" data-step="1">
+    <h2 class="h2">Let's start with your name.</h2>
+    <p class="q-note">We'll use this in our reply and in any intro to a partner (like Larta).</p>
+    <input type="text" class="q-input" id="q-name" placeholder="Jane Founder"/>
+    <input type="email" class="q-input" id="q-email" placeholder="jane@company.com"/>
+    <input type="text" class="q-input" id="q-company" placeholder="Company or lab"/>
+  </section>
+
+  <section class="survey-step" data-step="2">
+    <h2 class="h2">Where in New Mexico?</h2>
+    <p class="q-note">We track geographic reach — rural and underserved counties are a priority.</p>
+    <div class="q-options" data-field="county" data-single>
+      <label class="q-option"><input type="radio" name="county" value="Bernalillo"/><span class="q-label">Bernalillo · Albuquerque metro</span></label>
+      <label class="q-option"><input type="radio" name="county" value="Santa Fe"/><span class="q-label">Santa Fe</span></label>
+      <label class="q-option"><input type="radio" name="county" value="Doña Ana"/><span class="q-label">Doña Ana · Las Cruces</span></label>
+      <label class="q-option"><input type="radio" name="county" value="Los Alamos"/><span class="q-label">Los Alamos</span></label>
+      <label class="q-option"><input type="radio" name="county" value="Sandoval"/><span class="q-label">Sandoval · Rio Rancho</span></label>
+      <label class="q-option"><input type="radio" name="county" value="Other rural"/><span class="q-label">Other rural NM county<span class="q-sub">Chaves, Eddy, Taos, McKinley, San Juan, and 27 others</span></span></label>
+      <label class="q-option"><input type="radio" name="county" value="Out of state"/><span class="q-label">Out of state<span class="q-sub">NM FAST supports NM-based teams. We can still point you to federal resources.</span></span></label>
+    </div>
+  </section>
+
+  <section class="survey-step" data-step="3">
+    <h2 class="h2">What are you building?</h2>
+    <p class="q-note">Pick the closest fit. Priority sectors get dedicated coaching through this grant.</p>
+    <div class="q-options" data-field="sector" data-single>
+      <label class="q-option"><input type="radio" name="sector" value="advanced-energy"/><span class="q-label">Advanced Energy<span class="q-sub">Grid, storage, hydrogen, fuels, clean generation</span></span></label>
+      <label class="q-option"><input type="radio" name="sector" value="advanced-computing"/><span class="q-label">Advanced Computing<span class="q-sub">AI/ML, quantum, semiconductors, HPC</span></span></label>
+      <label class="q-option"><input type="radio" name="sector" value="bioscience"/><span class="q-label">Bioscience<span class="q-sub">Biotech, diagnostics, therapeutics, agtech</span></span></label>
+      <label class="q-option"><input type="radio" name="sector" value="aerospace"/><span class="q-label">Aerospace<span class="q-sub">Space systems, UAS, propulsion, optics, defense-adjacent</span></span></label>
+      <label class="q-option"><input type="radio" name="sector" value="other"/><span class="q-label">Other deep tech<span class="q-sub">Advanced materials, robotics, autonomy, water, etc.</span></span></label>
+    </div>
+  </section>
+
+  <section class="survey-step" data-step="4">
+    <h2 class="h2">Where are you in the SBIR journey?</h2>
+    <div class="q-options" data-field="stage" data-single>
+      <label class="q-option"><input type="radio" name="stage" value="pre-sbir"/><span class="q-label">Pre-SBIR<span class="q-sub">Curious. Haven't submitted yet. Want to learn the basics.</span></span></label>
+      <label class="q-option"><input type="radio" name="stage" value="phase-0"/><span class="q-label">Phase 0<span class="q-sub">Preparing a first proposal. Picking an agency/topic. Need coaching.</span></span></label>
+      <label class="q-option"><input type="radio" name="stage" value="phase-1"/><span class="q-label">Phase I<span class="q-sub">Have a Phase I award or are mid-submission. Eyeing Phase II.</span></span></label>
+      <label class="q-option"><input type="radio" name="stage" value="phase-2"/><span class="q-label">Phase II<span class="q-sub">Post-Phase II. Commercialization, follow-on, or matching grant focus.</span></span></label>
+    </div>
+  </section>
+
+  <section class="survey-step" data-step="5">
+    <h2 class="h2">Which agency are you aiming for?</h2>
+    <p class="q-note">If you don't know yet, pick "Not sure" — the ACSA accelerator and SBIR 101 workshops help you figure this out.</p>
+    <div class="q-options" data-field="agency" data-single>
+      <label class="q-option"><input type="radio" name="agency" value="DOE"/><span class="q-label">DOE · Department of Energy</span></label>
+      <label class="q-option"><input type="radio" name="agency" value="NSF"/><span class="q-label">NSF · National Science Foundation</span></label>
+      <label class="q-option"><input type="radio" name="agency" value="NASA"/><span class="q-label">NASA</span></label>
+      <label class="q-option"><input type="radio" name="agency" value="DoD"/><span class="q-label">DoD · Army, Navy, Air Force, DARPA</span></label>
+      <label class="q-option"><input type="radio" name="agency" value="NIH"/><span class="q-label">NIH · National Institutes of Health</span></label>
+      <label class="q-option"><input type="radio" name="agency" value="Other"/><span class="q-label">Other · USDA, NOAA, DHS, DOT, etc.</span></label>
+      <label class="q-option"><input type="radio" name="agency" value="Unsure"/><span class="q-label">Not sure yet<span class="q-sub">That's fine — we help you figure it out.</span></span></label>
+    </div>
+  </section>
+
+  <section class="survey-step" data-step="6">
+    <h2 class="h2">Is this your first SBIR/STTR submission?</h2>
+    <div class="q-options" data-field="firstTime" data-single>
+      <label class="q-option"><input type="radio" name="firstTime" value="yes"/><span class="q-label">Yes · First-timer</span></label>
+      <label class="q-option"><input type="radio" name="firstTime" value="applied-once"/><span class="q-label">Applied once, didn't win</span></label>
+      <label class="q-option"><input type="radio" name="firstTime" value="experienced"/><span class="q-label">Have submitted multiple times</span></label>
+      <label class="q-option"><input type="radio" name="firstTime" value="phase-1-winner"/><span class="q-label">Have won Phase I before</span></label>
+    </div>
+  </section>
+
+  <section class="survey-step" data-step="7">
+    <h2 class="h2">When do you want to submit?</h2>
+    <div class="q-options" data-field="timeline" data-single>
+      <label class="q-option"><input type="radio" name="timeline" value="lt-3"/><span class="q-label">Less than 3 months<span class="q-sub">Tight — we'll prioritize office hours + micro-grant support.</span></span></label>
+      <label class="q-option"><input type="radio" name="timeline" value="3-6"/><span class="q-label">3–6 months<span class="q-sub">The sweet spot for a full ACSA cohort.</span></span></label>
+      <label class="q-option"><input type="radio" name="timeline" value="6-12"/><span class="q-label">6–12 months<span class="q-sub">Plenty of time to prep. Start with a workshop, then an accelerator.</span></span></label>
+      <label class="q-option"><input type="radio" name="timeline" value="unsure"/><span class="q-label">Not sure yet</span></label>
+    </div>
+  </section>
+
+  <section class="survey-step" data-step="8">
+    <h2 class="h2">What would help most?</h2>
+    <p class="q-note">Pick all that apply.</p>
+    <div class="q-options" data-field="needs">
+      <label class="q-option"><input type="checkbox" name="needs" value="proposal-coaching"/><span class="q-label">Proposal coaching · writing the technical + commercial plan</span></label>
+      <label class="q-option"><input type="checkbox" name="needs" value="agency-fit"/><span class="q-label">Agency &amp; topic fit · which solicitation is right for me</span></label>
+      <label class="q-option"><input type="checkbox" name="needs" value="budget-compliance"/><span class="q-label">Budget &amp; compliance · registrations, personnel, overhead</span></label>
+      <label class="q-option"><input type="checkbox" name="needs" value="commercialization"/><span class="q-label">Commercialization plan · customer discovery, TAM, letters of intent</span></label>
+      <label class="q-option"><input type="checkbox" name="needs" value="prototyping"/><span class="q-label">Prototyping · build early hardware or demo</span></label>
+      <label class="q-option"><input type="checkbox" name="needs" value="phase-2-planning"/><span class="q-label">Phase II planning · bridging a Phase I win into a Phase II</span></label>
+      <label class="q-option"><input type="checkbox" name="needs" value="funding"/><span class="q-label">Direct funding · micro-grant or travel stipend</span></label>
+    </div>
+  </section>
+
+  <section class="survey-step" data-step="9">
+    <h2 class="h2">Optional: anything we should know?</h2>
+    <p class="q-note">These are optional. NM FAST reports to NMEDD on underserved reach, and qualifying teams get priority for stipends and micro-grants.</p>
+    <div class="q-options" data-field="demographics">
+      <label class="q-option"><input type="checkbox" name="demographics" value="rural"/><span class="q-label">Based in a rural NM county</span></label>
+      <label class="q-option"><input type="checkbox" name="demographics" value="woman-led"/><span class="q-label">Woman-led company</span></label>
+      <label class="q-option"><input type="checkbox" name="demographics" value="veteran"/><span class="q-label">Veteran-led company</span></label>
+      <label class="q-option"><input type="checkbox" name="demographics" value="minority"/><span class="q-label">Minority-led company</span></label>
+      <label class="q-option"><input type="checkbox" name="demographics" value="native"/><span class="q-label">Indigenous-led / Native-owned</span></label>
+      <label class="q-option"><input type="checkbox" name="demographics" value="university"/><span class="q-label">University spin-out or lab-affiliated</span></label>
+    </div>
+  </section>
+
+  <section class="survey-step" data-step="10">
+    <h2 class="h2">In one paragraph — what are you building?</h2>
+    <p class="q-note">A few sentences is plenty. We'll read it before we reply.</p>
+    <textarea class="q-input" id="q-desc" placeholder="We're building a grid-scale flow battery using novel electrolyte chemistry…"></textarea>
+  </section>
+
+  <div class="survey-nav">
+    <button class="btn btn-ghost" id="prev-btn" style="visibility: hidden;">← Back</button>
+    <button class="btn btn-primary" id="next-btn">Next →</button>
+  </div>
+</main>
+
+<main class="result-wrap" id="result-root" style="display: none;">
+  <div class="result-hero">
+    <div class="eyebrow">Your match</div>
+    <h1 class="display">Here's where to<br/>start, <span id="result-name" class="accent">founder</span>.</h1>
+    <p class="lead" style="margin: 0 auto;">Based on your answers, these programs fit best. A real human will also reply within 2 business days with next steps.</p>
+  </div>
+
+  <div class="recommendations" id="recommendations"></div>
+
+  <div style="text-align: center; margin-top: 48px; padding-top: 32px; border-top: 1px solid var(--line);">
+    <div class="eyebrow" style="margin-bottom: 10px;">Submission received</div>
+    <p class="small" id="submission-note">We've logged your answers. Reply time: usually same-day, max 2 business days.</p>
+    <div style="margin-top: 20px; display: flex; gap: 12px; justify-content: center; flex-wrap: wrap;">
+      <a href="programs.html" class="btn btn-ghost">See all programs</a>
+      <a href="calendar.html" class="btn btn-ghost">Upcoming events</a>
+    </div>
+  </div>
+</main>
+
+<div id="site-footer-root"></div>
+
+<script src="data.js"></script>
+<script src="shared.js"></script>
+<script src="survey.js"></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Travel Stipend · NM FAST</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="index.html" class="brand"><img src="assets/NMFAST_color.png" alt="NM FAST"/></a>
+    <nav class="site-nav">
+      <a href="programs.html">Programs</a>
+      <a href="calendar.html">Calendar</a>
+      <a href="resources.html">Resources</a>
+      <a href="news.html">News</a>
+      <a href="about.html">About</a>
+      <a href="briefing.html">Briefing</a>
+      <a href="apply.html" class="btn btn-primary btn-sm">Apply</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hub-intro">
+  <div class="wrap">
+    <div class="eyebrow">Travel stipend · Application</div>
+    <h1 class="display">Get to the<br/><span class="accent">conference.</span></h1>
+    <p class="lead">Two stipends per year for NM founders attending the National SBIR Innovation Summit and similar federal conferences. Priority for underserved and rural applicants who would not otherwise be able to attend.</p>
+  </div>
+</section>
+
+<main class="app-form">
+  <form id="apply-form"
+        data-kind="travel-apply"
+        data-confirm-title="Application received."
+        data-confirm-body="We'll follow up within 5 business days.">
+
+    <div class="form-field">
+      <label for="name">Name <span class="req">*</span></label>
+      <input id="name" name="name" type="text" required/>
+    </div>
+
+    <div class="form-field">
+      <label for="email">Email <span class="req">*</span></label>
+      <input id="email" name="email" type="email" required/>
+    </div>
+
+    <div class="form-field">
+      <label for="company">Company name <span class="req">*</span></label>
+      <input id="company" name="company" type="text" required/>
+    </div>
+
+    <div class="form-field">
+      <label for="county">NM county <span class="req">*</span></label>
+      <select id="county" name="county" required>
+        <option value="">Select your county</option>
+        <option>Bernalillo · Albuquerque metro</option>
+        <option>Santa Fe</option>
+        <option>Doña Ana · Las Cruces</option>
+        <option>Los Alamos</option>
+        <option>Sandoval · Rio Rancho</option>
+        <option>Other rural NM county</option>
+        <option>Out of state</option>
+      </select>
+    </div>
+
+    <div class="form-field">
+      <label for="conferenceName">Conference name <span class="req">*</span></label>
+      <input id="conferenceName" name="conferenceName" type="text" required placeholder="e.g. National SBIR Innovation Summit 2026"/>
+    </div>
+
+    <div class="form-field">
+      <label for="conferenceDate">Conference date <span class="req">*</span></label>
+      <input id="conferenceDate" name="conferenceDate" type="date" required/>
+    </div>
+
+    <div class="form-field">
+      <label for="rationale">Why is this conference valuable for your SBIR work? <span class="req">*</span></label>
+      <p class="small" style="margin: -2px 0 12px; color: var(--ink-soft);">Be specific — which agency program managers are you targeting? What sessions will you attend? What follow-on do you expect?</p>
+      <textarea id="rationale" name="rationale" required placeholder="Targeting DOE Office of Science PMs in the Building Technologies portfolio. Plan to attend 3 agency office hours and the commercialization track…"></textarea>
+    </div>
+
+    <div class="form-field">
+      <label>Demographics (optional)</label>
+      <p class="small" style="margin: -2px 0 12px; color: var(--ink-soft);">Priority is given to underserved and rural applicants. Leave blank if you'd rather not say.</p>
+      <div class="check-row">
+        <label><input type="checkbox" name="demographics" value="rural"/> Based in a rural NM county</label>
+        <label><input type="checkbox" name="demographics" value="woman-led"/> Woman-led company</label>
+        <label><input type="checkbox" name="demographics" value="veteran"/> Veteran-led company</label>
+        <label><input type="checkbox" name="demographics" value="minority"/> Minority-led company</label>
+        <label><input type="checkbox" name="demographics" value="native"/> Indigenous-led / Native-owned</label>
+        <label><input type="checkbox" name="demographics" value="university"/> University spin-out or lab-affiliated</label>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-lg">Submit Application →</button>
+  </form>
+
+  <div id="confirm-root" class="form-confirm" style="display:none;"></div>
+</main>
+
+<div id="site-footer-root"></div>
+
+<script src="data.js"></script>
+<script src="shared.js"></script>
+<script src="apply-form.js"></script>
+</body>
+</html>

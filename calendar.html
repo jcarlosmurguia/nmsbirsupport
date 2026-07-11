@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Calendar · NM FAST</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="index.html" class="brand"><img src="assets/NMFAST_color.png" alt="NM FAST"/></a>
+    <nav class="site-nav">
+      <a href="programs.html">Programs</a>
+      <a href="calendar.html" class="active">Calendar</a>
+      <a href="resources.html">Resources</a>
+      <a href="news.html">News</a>
+      <a href="about.html">About</a>
+      <a href="briefing.html">Briefing</a>
+      <a href="apply.html" class="btn btn-primary btn-sm">Apply</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hub-intro">
+  <div class="wrap">
+    <div class="eyebrow">What's happening</div>
+    <h1 class="display">Every<br/><span class="accent">SBIR moment.</span></h1>
+    <p class="lead">Cohort starts, workshop dates, matching grant info sessions, and one-on-ones — all on one calendar.</p>
+  </div>
+</section>
+
+<section class="hub-filters">
+  <div class="wrap">
+    <div class="filter-row">
+      <div class="filter-label">Kind</div>
+      <div class="chips" data-filter-group="kind">
+        <button class="chip active" data-val="all">All</button>
+        <button class="chip" data-val="Cohort">Cohort</button>
+        <button class="chip" data-val="Workshop">Workshop</button>
+        <button class="chip" data-val="Webinar">Webinar</button>
+        <button class="chip" data-val="Info session">Info session</button>
+        <button class="chip" data-val="Event">Event</button>
+      </div>
+    </div>
+    <div class="filter-row">
+      <div class="filter-label">When</div>
+      <div class="chips" data-filter-group="when">
+        <button class="chip active" data-val="upcoming">Upcoming</button>
+        <button class="chip" data-val="all">All</button>
+        <button class="chip" data-val="past">Past</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<main class="wrap" style="padding: 48px 28px 32px;">
+  <div class="cal-list" id="cal-list"></div>
+</main>
+
+<section class="cta-band">
+  <div class="wrap cta-band-inner">
+    <div>
+      <div class="eyebrow">Never miss a deadline</div>
+      <h2 class="h2">Get the monthly newsletter.</h2>
+      <p>All upcoming cohorts, workshops, and deadlines — plus the best new agency solicitations for NM founders. Once a month, no noise.</p>
+    </div>
+    <form class="newsletter newsletter-inline" onsubmit="subscribeNewsletter(event)">
+      <input type="email" placeholder="your@email.com" required/>
+      <button class="btn btn-primary btn-lg" type="submit">Subscribe</button>
+    </form>
+  </div>
+</section>
+
+<div id="site-footer-root"></div>
+
+<script src="data.js"></script>
+<script src="shared.js"></script>
+<script src="calendar.js"></script>
+</body>
+</html>

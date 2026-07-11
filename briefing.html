@@ -1,0 +1,292 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Daily SBIR/STTR Briefing · NM FAST</title>
+<meta name="description" content="An automatically updated daily briefing on SBIR/STTR solicitations, deadlines, policy, and agency news — curated for New Mexico founders by NM FAST."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+<style>
+/* ── Briefing page styles (briefing.html only) ── */
+.brief-meta {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px 16px;
+  margin: 20px 0 4px;
+}
+.brief-stamp {
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ink-mute);
+}
+.brief-stamp strong { color: var(--maroon); }
+.brief-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--gold-2);
+  background: var(--cream-2);
+  border: 1px solid var(--line);
+  padding: 5px 11px;
+}
+.brief-badge .dot {
+  width: 7px; height: 7px; border-radius: 50%;
+  background: var(--gold); display: inline-block;
+}
+
+/* Deadline strip */
+.deadline-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1px;
+  background: var(--line);
+  border: 1px solid var(--line);
+  margin: 28px 0 8px;
+}
+.deadline-cell {
+  background: var(--off-white);
+  padding: 16px 18px;
+}
+.deadline-cell .dl-label {
+  font-size: 11px; font-weight: 800; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--ink-mute); margin-bottom: 6px;
+}
+.deadline-cell .dl-date {
+  font-size: 20px; font-weight: 800; letter-spacing: -0.01em; color: var(--maroon);
+}
+.deadline-cell .dl-note { font-size: 12px; color: var(--ink-soft); margin-top: 3px; }
+
+/* Section */
+.brief-section { margin-top: 44px; }
+.brief-section-head {
+  display: flex; align-items: baseline; gap: 12px;
+  border-bottom: 2px solid var(--maroon); padding-bottom: 8px; margin-bottom: 4px;
+}
+.brief-section-head .bs-kicker {
+  font-size: 11px; font-weight: 800; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold-2);
+}
+
+/* Item cards */
+.brief-item {
+  background: var(--off-white);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--gold);
+  padding: 20px 24px;
+  margin-top: 14px;
+}
+.brief-item h3 {
+  font-size: 18px; font-weight: 800; line-height: 1.3;
+  color: var(--ink); letter-spacing: -0.01em; margin: 0 0 8px;
+}
+.brief-item p { margin: 0 0 10px; font-size: 15px; line-height: 1.6; color: var(--ink-soft); }
+.brief-item p:last-child { margin-bottom: 0; }
+.brief-tags { display: flex; flex-wrap: wrap; gap: 8px; margin: 0 0 10px; }
+.brief-tag {
+  font-size: 11px; font-weight: 800; letter-spacing: 0.06em; text-transform: uppercase;
+  color: var(--maroon); background: var(--cream-2); border: 1px solid var(--line);
+  padding: 4px 9px;
+}
+.brief-tag.hot { color: var(--off-white); background: var(--maroon); border-color: var(--maroon); }
+.brief-src { font-size: 13px; font-weight: 700; color: var(--maroon); }
+.brief-src::after { content: ' →'; }
+
+.brief-note {
+  margin-top: 40px;
+  background: var(--cream-2);
+  border-left: 3px solid var(--gold);
+  padding: 20px 26px;
+}
+.brief-note .tip-label {
+  font-size: 11px; font-weight: 800; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--gold-2); margin-bottom: 5px;
+}
+.brief-note p { margin: 0; font-size: 14px; color: var(--ink-soft); line-height: 1.55; }
+.brief-note a { color: var(--maroon); font-weight: 700; }
+
+@media (max-width: 640px) {
+  .brief-item { padding: 16px 18px; }
+  .brief-item h3 { font-size: 16px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="index.html" class="brand">
+      <img src="assets/NMFAST_color.png" alt="NM FAST"/>
+    </a>
+    <nav class="site-nav">
+      <a href="programs.html">Programs</a>
+      <a href="calendar.html">Calendar</a>
+      <a href="resources.html">Resources</a>
+      <a href="news.html">News</a>
+      <a href="briefing.html" class="active">Briefing</a>
+      <a href="about.html">About</a>
+      <a href="apply.html" class="btn btn-primary btn-sm">Apply</a>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<section class="hub-intro">
+  <div class="wrap">
+    <div class="eyebrow">Updated every morning</div>
+    <h1 class="display">Daily SBIR/STTR<br/><span class="accent">briefing.</span></h1>
+    <p class="lead">A fresh look at federal SBIR/STTR solicitations, deadlines, policy moves, and agency news — automatically compiled each morning so New Mexico founders start the day informed.</p>
+    <div class="brief-meta">
+      <span class="brief-badge"><span class="dot"></span>Auto-updated</span>
+      <span class="brief-stamp">Last updated: <strong>Friday, July 10, 2026</strong></span>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN -->
+<main class="wrap" style="padding: 0 28px 80px;">
+
+  <!-- ══════════════════════════════════════════════════════════════
+       BRIEFING CONTENT · everything between the two BRIEFING-CONTENT
+       markers is regenerated automatically each morning.
+       ══════════════════════════════════════════════════════════════ -->
+  <!-- BRIEFING-CONTENT-START -->
+
+  <!-- Deadline quick-glance -->
+  <div class="deadline-strip">
+    <div class="deadline-cell">
+      <div class="dl-label">NSF Phase I</div>
+      <div class="dl-date">Jul 27</div>
+      <div class="dl-note">NSF 26-510 / 26-511</div>
+    </div>
+    <div class="deadline-cell">
+      <div class="dl-label">DoD / DARPA</div>
+      <div class="dl-date">Jul 22</div>
+      <div class="dl-note">Release 3 closes 12pm ET</div>
+    </div>
+    <div class="deadline-cell">
+      <div class="dl-label">Army topics</div>
+      <div class="dl-date">Aug 19</div>
+      <div class="dl-note">New topics open Jul 22</div>
+    </div>
+    <div class="deadline-cell">
+      <div class="dl-label">DOE fall cohort (NM FAST)</div>
+      <div class="dl-date">Sep 10</div>
+      <div class="dl-note">Apply via NM FAST</div>
+    </div>
+  </div>
+
+  <!-- Policy -->
+  <section class="brief-section">
+    <div class="brief-section-head">
+      <span class="bs-kicker">Policy &amp; Reauthorization</span>
+    </div>
+    <div class="brief-item">
+      <div class="brief-tags"><span class="brief-tag hot">Signed into law</span><span class="brief-tag">Through FY2031</span></div>
+      <h3>SBIR/STTR reauthorized through September 30, 2031</h3>
+      <p>The Small Business Innovation and Economic Security Act (S. 3971) is law, reauthorizing both programs through FY2031 and ending the lapse that began when authorization expired September 30, 2025. It authorizes roughly $6 billion in funding and cleared the House 345–41.</p>
+      <p>Two reforms matter for applicants: a new Phase II "Strategic Breakthrough" award category for agencies spending over $100M/yr on SBIR, and expanded national-security and supply-chain due diligence on awardees before award.</p>
+      <a class="brief-src" href="https://www.congress.gov/bill/119th-congress/senate-bill/1573" target="_blank" rel="noopener">Congress.gov · S.1573</a>
+    </div>
+  </section>
+
+  <!-- NSF -->
+  <section class="brief-section">
+    <div class="brief-section-head">
+      <span class="bs-kicker">National Science Foundation</span>
+    </div>
+    <div class="brief-item">
+      <div class="brief-tags"><span class="brief-tag hot">Deadline Jul 27</span><span class="brief-tag">$250M pool</span></div>
+      <h3>NSF FY2026 SBIR/STTR Phase I open — proposals due July 27</h3>
+      <p>Two solicitations are live: NSF 26-510 (deep technologies advancing U.S. competitiveness &amp; security) and NSF 26-511 (a new pilot on scientific instrumentation). Phase I awards up to $305,000 (6–18 months); Phase II up to $1,250,000 (~24 months).</p>
+      <p>Reminder: the mandatory Project Pitch on-ramp reopened June 2 — a Phase I proposal cannot be submitted without an invited pitch first.</p>
+      <a class="brief-src" href="https://seedfund.nsf.gov/solicitations/" target="_blank" rel="noopener">NSF · America's Seed Fund</a>
+    </div>
+  </section>
+
+  <!-- Defense -->
+  <section class="brief-section">
+    <div class="brief-section-head">
+      <span class="bs-kicker">Department of Defense</span>
+    </div>
+    <div class="brief-item">
+      <div class="brief-tags"><span class="brief-tag hot">Closes Jul 22</span><span class="brief-tag">Monthly BAAs</span></div>
+      <h3>DoD Release 3 closes July 22; new monthly BAA cadence</h3>
+      <p>DoD now issues BAAs monthly (pre-release the first Wednesday of each month). Release 3 (pre-released 6/3, opened 6/24) closes July 22 at 12:00pm ET — 12 conventional SBIR topics plus one CSO Open Topic. DARPA topics share the July 22 close.</p>
+      <a class="brief-src" href="https://www.dodsbirsttr.mil/" target="_blank" rel="noopener">DSIP · DoD SBIR/STTR portal</a>
+    </div>
+    <div class="brief-item">
+      <div class="brief-tags"><span class="brief-tag">Army FUZE</span><span class="brief-tag">xTech|Phantum</span></div>
+      <h3>Army launches five new SBIR/STTR opportunities</h3>
+      <p>Following reauthorization, the Army opened five funding opportunities under its Army FUZE initiative. One is the xTech|Phantum competition: up to 16 finalists receive $2,500 each to pitch in Arizona this July; up to 8 winners get an additional $20,000 and may submit a Phase I proposal worth up to $300,000 (≤6-month proof-of-concept). New topics pre-release July 1, open July 22, close August 19.</p>
+      <a class="brief-src" href="https://armysbir.army.mil/announcement/five-new-funding-opportunities-for-small-businesses/" target="_blank" rel="noopener">Army SBIR/STTR announcement</a>
+    </div>
+  </section>
+
+  <!-- Health -->
+  <section class="brief-section">
+    <div class="brief-section-head">
+      <span class="bs-kicker">NIH · CDC · FDA</span>
+    </div>
+    <div class="brief-item">
+      <div class="brief-tags"><span class="brief-tag">Standing NOFO</span><span class="brief-tag">Rolling</span></div>
+      <h3>NIH/CDC/FDA SBIR and NIH STTR Parent NOFOs open</h3>
+      <p>The NIH, CDC and FDA SBIR Parent NOFO and the NIH STTR Parent NOFO (released 05/28/2026) remain the standing routes for health-related proposals, with standard cycle receipt dates through the year.</p>
+      <a class="brief-src" href="https://seed.nih.gov/small-business-funding/find-funding/sbir-sttr-funding-opportunities" target="_blank" rel="noopener">NIH Seed · Find Funding</a>
+    </div>
+  </section>
+
+  <!-- DOT -->
+  <section class="brief-section">
+    <div class="brief-section-head">
+      <span class="bs-kicker">Department of Transportation</span>
+    </div>
+    <div class="brief-item">
+      <div class="brief-tags"><span class="brief-tag">Now closed</span></div>
+      <h3>DOT FY26 Phase I window has closed</h3>
+      <p>The DOT SBIR FY26 Phase I solicitation ran June 3 and closed July 7 at 3:00pm ET, so this cycle is now closed. Watch for the next DOT release later in the fiscal year.</p>
+      <a class="brief-src" href="https://www.volpe.dot.gov/work-with-us/small-business-innovation-research/solicitations" target="_blank" rel="noopener">Volpe · DOT solicitations</a>
+    </div>
+  </section>
+
+  <!-- BRIEFING-CONTENT-END -->
+
+  <!-- Static footer note (not regenerated) -->
+  <div class="brief-note">
+    <div>
+      <div class="tip-label">How this page works</div>
+      <p>This briefing is compiled automatically each morning from public federal sources (sbir.gov, agency portals, and reputable trade press). It's a starting point, not official guidance — always confirm details and deadlines on the agency's own solicitation page before applying. Questions? Reach <strong>Carlos Murguia</strong> at <a href="mailto:cmurguia@nmsu.edu">cmurguia@nmsu.edu</a> or <a href="tel:+15754051042">(575) 405-1042</a>.</p>
+    </div>
+  </div>
+
+</main>
+
+<!-- CTA BAND -->
+<section class="cta-band">
+  <div class="wrap cta-band-inner">
+    <div>
+      <div class="eyebrow">Ready to apply?</div>
+      <h2 class="h2">Find the right program.</h2>
+      <p>Take the 2-minute match survey and we'll recommend the NM FAST programs that fit your stage and sector.</p>
+    </div>
+    <div>
+      <a href="apply.html" class="btn btn-primary btn-lg">Start the survey →</a>
+    </div>
+  </div>
+</section>
+
+<div id="site-footer-root"></div>
+
+<script src="data.js"></script>
+<script src="shared.js"></script>
+</body>
+</html>

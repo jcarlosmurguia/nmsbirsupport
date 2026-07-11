@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width,initial-scale=1"/>
+<title>Apply to Larta · NM FAST</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+<link rel="stylesheet" href="styles.css"/>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="wrap header-inner">
+    <a href="index.html" class="brand"><img src="assets/NMFAST_color.png" alt="NM FAST"/></a>
+    <nav class="site-nav">
+      <a href="programs.html">Programs</a>
+      <a href="calendar.html">Calendar</a>
+      <a href="resources.html">Resources</a>
+      <a href="news.html">News</a>
+      <a href="about.html">About</a>
+      <a href="briefing.html">Briefing</a>
+      <a href="apply.html" class="btn btn-primary btn-sm">Apply</a>
+    </nav>
+  </div>
+</header>
+
+<section class="hub-intro">
+  <div class="wrap">
+    <div class="eyebrow">Larta Commercialization · Application</div>
+    <h1 class="display">Apply to a<br/><span class="accent">Larta cohort.</span></h1>
+    <p class="lead">Two cohorts per year, up to 20 NM companies each. Free to NM founders. We review applications on a rolling basis and reply within 2 business days.</p>
+  </div>
+</section>
+
+<main class="app-form">
+  <form id="apply-form"
+        data-kind="larta-apply"
+        data-confirm-title="Application received."
+        data-confirm-body="We'll be in touch within 2 business days.">
+
+    <div class="form-field">
+      <label for="name">Name <span class="req">*</span></label>
+      <input id="name" name="name" type="text" required/>
+    </div>
+
+    <div class="form-field">
+      <label for="email">Email <span class="req">*</span></label>
+      <input id="email" name="email" type="email" required/>
+    </div>
+
+    <div class="form-field">
+      <label for="company">Company name <span class="req">*</span></label>
+      <input id="company" name="company" type="text" required/>
+    </div>
+
+    <div class="form-field">
+      <label for="county">NM county <span class="req">*</span></label>
+      <select id="county" name="county" required>
+        <option value="">Select your county</option>
+        <option>Bernalillo · Albuquerque metro</option>
+        <option>Santa Fe</option>
+        <option>Doña Ana · Las Cruces</option>
+        <option>Los Alamos</option>
+        <option>Sandoval · Rio Rancho</option>
+        <option>Other rural NM county</option>
+        <option>Out of state</option>
+      </select>
+    </div>
+
+    <div class="form-field">
+      <label for="sector">Sector <span class="req">*</span></label>
+      <select id="sector" name="sector" required>
+        <option value="">Pick the closest fit</option>
+        <option value="advanced-energy">Advanced Energy</option>
+        <option value="advanced-computing">Advanced Computing</option>
+        <option value="bioscience">Bioscience</option>
+        <option value="aerospace">Aerospace</option>
+        <option value="other">Other</option>
+      </select>
+    </div>
+
+    <div class="form-field">
+      <label for="stage">SBIR stage <span class="req">*</span></label>
+      <select id="stage" name="stage" required>
+        <option value="">Where are you in the SBIR journey?</option>
+        <option value="phase-0">Phase 0 · preparing first proposal</option>
+        <option value="phase-1">Phase I · awarded or mid-submission</option>
+        <option value="phase-2">Phase II · post-award</option>
+      </select>
+    </div>
+
+    <div class="form-field">
+      <label>Which cohort? <span class="req">*</span></label>
+      <div class="radio-row">
+        <label><input type="radio" name="cohort" value="cohort-1" required/> Cohort 1 · May 7</label>
+        <label><input type="radio" name="cohort" value="cohort-2"/> Cohort 2 · Aug 6</label>
+        <label><input type="radio" name="cohort" value="either"/> Either — whichever opens first</label>
+      </div>
+    </div>
+
+    <div class="form-field">
+      <label for="description">In 2–3 sentences, what are you building? <span class="req">*</span></label>
+      <textarea id="description" name="description" required placeholder="We're building a grid-scale flow battery using novel electrolyte chemistry…"></textarea>
+    </div>
+
+    <div class="form-field">
+      <label>Demographics (optional)</label>
+      <p class="small" style="margin: -2px 0 12px; color: var(--ink-soft);">NM FAST reports to NMEDD on underserved reach. Leave blank if you'd rather not say.</p>
+      <div class="check-row">
+        <label><input type="checkbox" name="demographics" value="rural"/> Based in a rural NM county</label>
+        <label><input type="checkbox" name="demographics" value="woman-led"/> Woman-led company</label>
+        <label><input type="checkbox" name="demographics" value="veteran"/> Veteran-led company</label>
+        <label><input type="checkbox" name="demographics" value="minority"/> Minority-led company</label>
+        <label><input type="checkbox" name="demographics" value="native"/> Indigenous-led / Native-owned</label>
+        <label><input type="checkbox" name="demographics" value="university"/> University spin-out or lab-affiliated</label>
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary btn-lg">Submit Application →</button>
+  </form>
+
+  <div id="confirm-root" class="form-confirm" style="display:none;"></div>
+</main>
+
+<div id="site-footer-root"></div>
+
+<script src="data.js"></script>
+<script src="shared.js"></script>
+<script src="apply-form.js"></script>
+</body>
+</html>
